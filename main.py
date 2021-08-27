@@ -1,13 +1,10 @@
-import bs4
+from bs4 import BeautifulSoup
 import lxml
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+with open('DJIA.html', 'r') as html_file:
+    content = html_file.read()
+    soup = BeautifulSoup(content, 'lxml')
+    td_tags = soup.find_all('td')
+    print(td_tags[3].text, td_tags[4].text, td_tags[5].text)
+    # for td in td_tags:
+    #     print(td.text)
